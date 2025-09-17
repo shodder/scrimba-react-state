@@ -1,11 +1,22 @@
+import { useState } from "react"
 
 export default function Pad(props) {
+    const [padOn, setPadOn] = useState(props.isOn)
+    
+    const isOnSyle = padOn ? "on" : undefined
 
-    const btnStyle = {
-        backgroundColor: props.color
+    function handleClick() {
+        setPadOn(
+            prevPadOn => !prevPadOn)
     }
 
+    const btnStyle = {
+        backgroundColor: props.color,
+    }
+
+    console.log(isOnSyle)
+
     return (
-        <button style={btnStyle} key={props.key}></button>
+        <button className={isOnSyle} style={btnStyle} key={props.key} onClick={handleClick}></button>
     )
 }
